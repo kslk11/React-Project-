@@ -1,17 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector ,useDispatch} from "react-redux";
+import { fetchData } from "../Features/FetchSlice2";
+import Loading from "./Loading";
 
 const About = () => {
-  const products = useSelector((state) => state.products.products);
+  const dispatch =useDispatch();
+  const {products ,loading,error} = useSelector((state) => state.products2);
 
+   useEffect(() => {
+      dispatch(fetchData());
+    }, [dispatch]);
+
+  if (error) return <div className="text-red-500 text-center py-6">{error}</div>;
   return (
     <div className="bg-gray-50 min-h-screen py-10 px-6">
       <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
         About Products
       </h1>
 
-      {products.length === 0 ? (
-        <p className="text-center text-gray-600">No products available</p>
+      {loading ? (
+        <Loading />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((item) => (

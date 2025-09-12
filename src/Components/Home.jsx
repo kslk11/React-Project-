@@ -8,13 +8,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate =useNavigate();
 
-useEffect(() => {
-  const fetchData = async () => {
-    const res = await axios.get("https://fakestoreapi.com/products");
-    dispatch(setData(res.data));
-  };
-  fetchData();
-}, [dispatch]);
 
 
   return (

@@ -18,8 +18,6 @@ import Payment from './Components/Payment';
 
 
 function App() {
-   const[darkMode,toggleDarkMode]=useDarkMode(false)
-
   return (
     <>
       <BrowserRouter>

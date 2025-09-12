@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, clearCart } from "../Features/CartSlice";
+import { removeFromCart,clearCart,increaseQuantity,decreaseQuantity} from "../Features/CartSlice";
 import { setSavedAddress } from "../Features/AddressSlice";
 import { useNavigate } from "react-router-dom";
 import useDarkMode from "../Hooks/useDarkMode";
@@ -18,9 +18,8 @@ const Cart = () => {
   const navigate = useNavigate();
   const [darkMode, toggleDarkMode] = useDarkMode(false);
 
-
   const total = cartItems.reduce(
-    (sum, item) => sum + item.price,
+    (sum, item) => sum + item.price * item.quantity,
     0
   );
 
@@ -77,8 +76,29 @@ const Cart = () => {
                   >
                     {item.title}
                   </h2>
-                  <p className="text-pink-500 font-bold">${item.price}</p>
-                 
+                  <p className="text-pink-500 font-bold">
+                    ${item.price} × {item.quantity} ={" "}
+                    <span className="text-green-600 font-semibold">
+                      ${(item.price * item.quantity).toFixed(2)}
+                    </span>
+                  </p>
+
+               
+                  <div className="flex items-center gap-3 mt-2">
+                    <button
+                      onClick={() => dispatch(decreaseQuantity(item.id))}
+                      className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"
+                    >
+                      ➖
+                    </button>
+                    <span className="font-semibold">{item.quantity}</span>
+                    <button
+                      onClick={() => dispatch(increaseQuantity(item.id))}
+                      className="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"
+                    >
+                      ➕
+                    </button>
+                  </div>
                 </div>
 
                 <button
@@ -107,6 +127,7 @@ const Cart = () => {
             </div>
           </div>
 
+        
           <div
             className={`p-6 rounded-xl shadow-md transition ${
               darkMode ? "bg-gray-800" : "bg-white"
