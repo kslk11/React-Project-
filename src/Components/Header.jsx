@@ -15,7 +15,6 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
         <Link
           to="/"
           className="text-2xl font-bold text-pink-500 tracking-wide hover:scale-105 transition-transform"
@@ -23,7 +22,6 @@ const Header = () => {
           ShopX
         </Link>
 
-        {/* Navigation */}
         <nav className="flex items-center gap-6 text-gray-700 font-medium">
           <Link
             to="/"
@@ -44,7 +42,6 @@ const Header = () => {
             About
           </Link>
 
-          {/* Auth Links */}
           {!user ? (
             <>
               <Link
