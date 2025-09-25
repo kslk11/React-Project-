@@ -41,7 +41,7 @@ const Products = () => {
     });
 
   const handleAddToCart = (item) => {
-    if (!user) return navigate("/login"); // fixed route
+    if (!user) return navigate("/login"); 
     dispatch(addToCart(item));
     setToggle((add) => ({ ...add, [item.id]: true }));
   };
@@ -59,7 +59,6 @@ const Products = () => {
       className={`min-h-screen py-10 px-6 transition-colors duration-300 ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-50 text-gray-800"
         }`}
     >
-      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
         <h1 className="text-3xl font-bold">🛍️ Products</h1>
         <div className="flex gap-4">
@@ -80,8 +79,6 @@ const Products = () => {
           </button>
         </div>
       </div>
-
-      {/* Filters */}
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
         <input
           type="text"
@@ -115,7 +112,6 @@ const Products = () => {
         </select>
       </div>
 
-      {/* Product Views */}
       {viewMode === "card" ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filterData.map((item) => (
