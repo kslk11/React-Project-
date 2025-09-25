@@ -39,7 +39,6 @@ const Products = () => {
       if (sort === "high") return b.price - a.price;
       return 0;
     });
-
   const handleAddToCart = (item) => {
     if (!user) return navigate("/lg"); 
     dispatch(addToCart(item));
