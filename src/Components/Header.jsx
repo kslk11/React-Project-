@@ -26,13 +26,13 @@ const Header = () => {
         {/* Navigation */}
         <nav className="flex items-center gap-6 text-gray-700 font-medium">
           <Link
-            to="/home"
+            to="/"
             className="hover:text-pink-500 hover:underline underline-offset-4 transition"
           >
             Home
           </Link>
           <Link
-            to="/"
+            to="/product"
             className="hover:text-pink-500 hover:underline underline-offset-4 transition"
           >
             Products

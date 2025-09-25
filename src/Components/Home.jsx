@@ -19,7 +19,7 @@ const Home = () => {
         Find the best products at unbeatable prices.
       </p>
       <button
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/product")}
         className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-lg shadow-md transition duration-300"
       >
         Shop Now
