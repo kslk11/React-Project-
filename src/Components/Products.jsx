@@ -41,7 +41,7 @@ const Products = () => {
     });
 
   const handleAddToCart = (item) => {
-    if (!user) return navigate("/login"); 
+    if (!user) return navigate("/lg"); 
     dispatch(addToCart(item));
     setToggle((add) => ({ ...add, [item.id]: true }));
   };
